@@ -1,0 +1,10 @@
+FROM python:latest
+
+RUN apt-get update
+RUN apt-get install -y vim curl git
+RUN pip install --no-cache-dir jupyterlab==4.4.10
+
+WORKDIR /notebooks
+
+EXPOSE 8888
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
